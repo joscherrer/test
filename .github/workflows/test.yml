@@ -19,10 +19,14 @@ jobs:
     runs-on: ubuntu-latest
     container: joscherrer/actions-images:makedeb
     steps:
-      - name: test
+      - name: Set permissions
         run: |
-          id
+          sudo groupadd -g $(stat -c "%g" /__w) docker
+          sudo usermod -aG docker $(whoami)
+          chmod -R g=u /__w
+      - name: Test permissions
+        run: |
           groups
-          cat /etc/group
-          cat /etc/passwd
-          ls -lRah /__w
+          ls -lah /
+          ls -lah /__w
+          touch /__w/test_file_permissions
