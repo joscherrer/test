@@ -11,4 +11,4 @@ jobs:
         run: |
           ls -lah /__w
           groups
-          cat /etc/group | column -t -s':'
+          cat /etc/group
