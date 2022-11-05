@@ -6,43 +6,44 @@ on:
   
 name: test
 jobs:
-  test1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: test
-        run: |
-          id
-          groups
-          cat /etc/group
-          cat /etc/passwd
-          echo "${{ github.workspace }}"
+#   test1:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: test
+#         run: |
+#           id
+#           groups
+#           cat /etc/group
+#           cat /etc/passwd
+#           echo "${{ github.workspace }}"
   test2:
     runs-on: ubuntu-latest
     container: 
       image: joscherrer/actions-images:makedeb
     steps:
-      - name: Set permissions
-        run: |
-          env
-          groups
-          ls -lah /
-          ls -lah /__w
-          sudo groupadd -g $(stat -c "%g" "$GITHUB_WORKSPACE") docker
-          sudo usermod -aG docker $(whoami)
-          sudo chmod -R g=u /__w
-          sudo chmod -R g=u /__t
-      - name: Test permissions
-        run: |
-          id
-          groups
-          ls -lah /
-          ls -lah /__w
-          touch $GITHUB_WORKSPACE/test_file_permissions
-          ls -lah /__w/_temp
-          ls -lah /__w/_temp/_runner_file_commands
       - uses: actions/checkout@v3
-      - name: testfail
-        if: always()
-        run: |
-          ls -lah /__w/_temp
-          ls -lah /__w/_temp/_runner_file_commands
+#       - name: Set permissions
+#         run: |
+#           env
+#           groups
+#           ls -lah /
+#           ls -lah /__w
+#           sudo groupadd -g $(stat -c "%g" "$GITHUB_WORKSPACE") docker
+#           sudo usermod -aG docker $(whoami)
+#           sudo chmod -R g=u /__w
+#           sudo chmod -R g=u /__t
+#       - name: Test permissions
+#         run: |
+#           id
+#           groups
+#           ls -lah /
+#           ls -lah /__w
+#           touch $GITHUB_WORKSPACE/test_file_permissions
+#           ls -lah /__w/_temp
+#           ls -lah /__w/_temp/_runner_file_commands
+
+#       - name: testfail
+#         if: always()
+#         run: |
+#           ls -lah /__w/_temp
+#           ls -lah /__w/_temp/_runner_file_commands
