@@ -23,13 +23,14 @@ jobs:
       - name: Set permissions
         run: |
           env
-          echo "${{ github.workspace }}"
           groups
           ls -lah /
           ls -lah /__w
-          # sudo groupadd -g $(stat -c "%g" /__w) docker
-          # sudo usermod -aG docker $(whoami)
-          # chmod -R g=u /__w
+          sudo groupadd -g $(stat -c "%g" "$GITHUB_WORKSPACE") docker
+          sudo usermod -aG docker $(whoami)
+          chmod -R g=u /__w
+          chmod -R g=u /__t
+          chmod -R g=u /__e
       - name: Test permissions
         run: |
           groups
