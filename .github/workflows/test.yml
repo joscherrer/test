@@ -1,8 +1,8 @@
 on:
   workflow_dispatch:
   
- name: test
- jobs:
+name: test
+jobs:
   test:
     runs-on: ubuntu-latest
     container: joscherrer/actions-images:makedeb
