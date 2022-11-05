@@ -18,7 +18,9 @@ jobs:
           echo "${{ github.workspace }}"
   test2:
     runs-on: ubuntu-latest
-    container: joscherrer/actions-images:makedeb
+    container: 
+      image: joscherrer/actions-images:makedeb
+      options: --user 1000
     steps:
       - name: Set permissions
         run: |
@@ -36,4 +38,5 @@ jobs:
           groups
           ls -lah /
           ls -lah /__w
-          touch /__w/test_file_permissions
+          touch $GITHUB_WORKSPACE/test_file_permissions
+      - uses: actions/checkout@v3
