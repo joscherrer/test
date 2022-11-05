@@ -21,9 +21,12 @@ jobs:
     steps:
       - name: Set permissions
         run: |
-          sudo groupadd -g $(stat -c "%g" /__w) docker
-          sudo usermod -aG docker $(whoami)
-          chmod -R g=u /__w
+          groups
+          ls -lah /
+          ls -lah /__w
+          # sudo groupadd -g $(stat -c "%g" /__w) docker
+          # sudo usermod -aG docker $(whoami)
+          # chmod -R g=u /__w
       - name: Test permissions
         run: |
           groups
