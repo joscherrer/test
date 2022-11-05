@@ -15,12 +15,14 @@ jobs:
           groups
           cat /etc/group
           cat /etc/passwd
+          echo "${{ github.workspace }}"
   test2:
     runs-on: ubuntu-latest
     container: joscherrer/actions-images:makedeb
     steps:
       - name: Set permissions
         run: |
+          echo "${{ github.workspace }}"
           groups
           ls -lah /
           ls -lah /__w
