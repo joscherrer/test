@@ -1,0 +1,14 @@
+on:
+  workflow_dispatch:
+  
+ name: test
+ jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: joscherrer/actions-images:makedeb
+    steps:
+      - name: test
+        run: |
+          ls -lah /__w
+          groups
+          cat /etc/group | column -t -s':'
