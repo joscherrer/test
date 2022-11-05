@@ -39,4 +39,6 @@ jobs:
           ls -lah /
           ls -lah /__w
           touch $GITHUB_WORKSPACE/test_file_permissions
+          ls -lah /__w/_temp
+          ls -lah /__w/_temp/_runner_file_commands
       - uses: actions/checkout@v3
