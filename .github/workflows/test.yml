@@ -30,7 +30,6 @@ jobs:
           sudo usermod -aG docker $(whoami)
           sudo chmod -R g=u /__w
           sudo chmod -R g=u /__t
-          sudo chmod -R g=u /__e
       - name: Test permissions
         run: |
           groups
